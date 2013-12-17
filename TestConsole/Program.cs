@@ -7,6 +7,7 @@ using System.IO;
 using System.IO.Compression;
 namespace TestConsole
 {
+    /*TEST COMMENT*/
     class Program
     {
         static void Main(string[] args)
