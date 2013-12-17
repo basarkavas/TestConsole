@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://fatura.edoksis.net" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://fatura.edoksis.net" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://fatura.edoksis.net">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GelenFaturaListeleme">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Girdi" type="tns:GelenFaturaListelemeUBLTRGirdi" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GelenFaturaListelemeUBLTRGirdi">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Girdi">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Mukellef" type="tns:Mukellef" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Girdi">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Kimlik" type="tns:Kimlik" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Kimlik">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Sistem" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Kullanici" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sifre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Mukellef">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="KimlikNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tipi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Adi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Soyadi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebSitesi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BinaNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BinaAdi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sokak" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ilce" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sehir" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ulke" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostaKodu" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VergiDairesi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FaxNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sube" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mahalle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IcKapiNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SabitTanimlamaNo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GelenFaturaListelemeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GelenFaturaListelemeResult" type="tns:GelenFaturaListelemeUBLTRCikti" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GelenFaturaListelemeUBLTRCikti">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Cikti">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Faturalar" type="tns:ArrayOfUBLTRBelgesi" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Cikti">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Sonuc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mesaj" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUBLTRBelgesi">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UBLTRBelgesi" nillable="true" type="tns:UBLTRBelgesi" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UBLTRBelgesi">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Icerik" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GelenUygulamaYanitiListeleme">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Girdi" type="tns:GelenUYListelemeUBLTRGirdi" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GelenUYListelemeUBLTRGirdi">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Girdi">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Mukellef" type="tns:Mukellef" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GelenUygulamaYanitiListelemeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GelenUygulamaYanitiListelemeResult" type="tns:GelenUYListelemeUBLTRCikti" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GelenUYListelemeUBLTRCikti">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Cikti">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Yanitlar" type="tns:ArrayOfUBLTRBelgesi" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ZarfGonder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Girdi" type="tns:ZarfGonderUBLTRGirdi" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ZarfGonderUBLTRGirdi">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Girdi">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Etiket" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Belgeler" type="tns:ArrayOfUBLTRBelgesi" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ZarfGonderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZarfGonderResult" type="tns:ZarfGonderUBLTRCikti" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ZarfGonderUBLTRCikti">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Cikti">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ZarfETTN" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="EFaturaFirmalari">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Girdi" type="tns:EFaturaFirmalariUBLTRGirdi" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EFaturaFirmalariUBLTRGirdi">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Girdi">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="SorgulamaZamani" nillable="true" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="EFaturaFirmalariResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EFaturaFirmalariResult" type="tns:EFaturaFirmalariUBLTRCikti" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EFaturaFirmalariUBLTRCikti">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Cikti">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Firmalar" type="s:base64Binary" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GelenFaturaListelemeSoapIn">
+    <wsdl:part name="parameters" element="tns:GelenFaturaListeleme" />
+  </wsdl:message>
+  <wsdl:message name="GelenFaturaListelemeSoapOut">
+    <wsdl:part name="parameters" element="tns:GelenFaturaListelemeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GelenUygulamaYanitiListelemeSoapIn">
+    <wsdl:part name="parameters" element="tns:GelenUygulamaYanitiListeleme" />
+  </wsdl:message>
+  <wsdl:message name="GelenUygulamaYanitiListelemeSoapOut">
+    <wsdl:part name="parameters" element="tns:GelenUygulamaYanitiListelemeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZarfGonderSoapIn">
+    <wsdl:part name="parameters" element="tns:ZarfGonder" />
+  </wsdl:message>
+  <wsdl:message name="ZarfGonderSoapOut">
+    <wsdl:part name="parameters" element="tns:ZarfGonderResponse" />
+  </wsdl:message>
+  <wsdl:message name="EFaturaFirmalariSoapIn">
+    <wsdl:part name="parameters" element="tns:EFaturaFirmalari" />
+  </wsdl:message>
+  <wsdl:message name="EFaturaFirmalariSoapOut">
+    <wsdl:part name="parameters" element="tns:EFaturaFirmalariResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FaturaUBLTRServiceSoap">
+    <wsdl:operation name="GelenFaturaListeleme">
+      <wsdl:input message="tns:GelenFaturaListelemeSoapIn" />
+      <wsdl:output message="tns:GelenFaturaListelemeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GelenUygulamaYanitiListeleme">
+      <wsdl:input message="tns:GelenUygulamaYanitiListelemeSoapIn" />
+      <wsdl:output message="tns:GelenUygulamaYanitiListelemeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZarfGonder">
+      <wsdl:input message="tns:ZarfGonderSoapIn" />
+      <wsdl:output message="tns:ZarfGonderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EFaturaFirmalari">
+      <wsdl:input message="tns:EFaturaFirmalariSoapIn" />
+      <wsdl:output message="tns:EFaturaFirmalariSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FaturaUBLTRServiceHttpGet" />
+  <wsdl:portType name="FaturaUBLTRServiceHttpPost" />
+  <wsdl:binding name="FaturaUBLTRServiceSoap" type="tns:FaturaUBLTRServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GelenFaturaListeleme">
+      <soap:operation soapAction="http://fatura.edoksis.net/GelenFaturaListeleme" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GelenUygulamaYanitiListeleme">
+      <soap:operation soapAction="http://fatura.edoksis.net/GelenUygulamaYanitiListeleme" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZarfGonder">
+      <soap:operation soapAction="http://fatura.edoksis.net/ZarfGonder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EFaturaFirmalari">
+      <soap:operation soapAction="http://fatura.edoksis.net/EFaturaFirmalari" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FaturaUBLTRServiceSoap12" type="tns:FaturaUBLTRServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GelenFaturaListeleme">
+      <soap12:operation soapAction="http://fatura.edoksis.net/GelenFaturaListeleme" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GelenUygulamaYanitiListeleme">
+      <soap12:operation soapAction="http://fatura.edoksis.net/GelenUygulamaYanitiListeleme" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZarfGonder">
+      <soap12:operation soapAction="http://fatura.edoksis.net/ZarfGonder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EFaturaFirmalari">
+      <soap12:operation soapAction="http://fatura.edoksis.net/EFaturaFirmalari" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FaturaUBLTRServiceHttpGet" type="tns:FaturaUBLTRServiceHttpGet">
+    <http:binding verb="GET" />
+  </wsdl:binding>
+  <wsdl:binding name="FaturaUBLTRServiceHttpPost" type="tns:FaturaUBLTRServiceHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="FaturaUBLTRService">
+    <wsdl:port name="FaturaUBLTRServiceSoap" binding="tns:FaturaUBLTRServiceSoap">
+      <soap:address location="https://efaturatest.edoksis.net/FaturaUBLTRService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FaturaUBLTRServiceSoap12" binding="tns:FaturaUBLTRServiceSoap12">
+      <soap12:address location="https://efaturatest.edoksis.net/FaturaUBLTRService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FaturaUBLTRServiceHttpGet" binding="tns:FaturaUBLTRServiceHttpGet">
+      <http:address location="https://efaturatest.edoksis.net/FaturaUBLTRService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FaturaUBLTRServiceHttpPost" binding="tns:FaturaUBLTRServiceHttpPost">
+      <http:address location="https://efaturatest.edoksis.net/FaturaUBLTRService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
