@@ -13,6 +13,7 @@ namespace TestConsole
         static void Main(string[] args)
         {
             Test3();
+            Console.WriteLine("testin");
             Console.Read();
         }
         private static void Test() 
